@@ -38,7 +38,7 @@ class Auth_Controller {
       logger.log("errors");
       res.send({errors});
     } else {
-      const errors = []//seperate errors from the form validation 
+      const errors = []//seperate errors from the form validation
       try {
         logger.log("no errors".green);
         let user = await User.findOne({
@@ -49,7 +49,7 @@ class Auth_Controller {
             errors.push({
               msg: `The Email ${email} is already registered.`
             })
-          
+
           // req.session.messages = [...errors];
           return res.json({errors});
         } else {
@@ -66,7 +66,7 @@ class Auth_Controller {
           passport.authenticate("local", (err, user, info)=>{
             logger.log({err, user, info})
             if (err) { return next(err); }
-            if (!user) { 
+            if (!user) {
               //TODO track failed logins by session.id 10 max?
               logger.log('sorry no user found')
               errors.push({msg:"Incorrect Username or Password"})
@@ -86,7 +86,7 @@ class Auth_Controller {
               //////////////TODO  Wrap this in a function somewhere ///////////////////////////
               return res.json({success: "You are now logged in", user })
             });
-            
+
           })(req, res, next);
 
         }
@@ -111,7 +111,7 @@ class Auth_Controller {
     passport.authenticate("local", (err, user, info) => {
       logger.log({err, user, info})
       if (err) { return next(err); }
-      if (!user) { 
+      if (!user) {
         //TODO track failed logins by session.id 10 max?
         logger.log('sorry no user found')
         errors.push({msg:"Incorrect Username or Password"})
@@ -126,9 +126,12 @@ class Auth_Controller {
         // req.session.messages.push({ success: "You are now logged in" });
         //  res.redirect('/edit-accounts/' + req.user.username);
         logger.log('WE LOHING IN')
-        return res.json({success: "You are now logged in", user })
+        req.session.save(()=>{
+          return res.json({success: "You are now logged in", user })
+
+        })
       });
- 
+
     })(req, res, next);
   }
 

@@ -18,7 +18,7 @@ module.exports = Client;
 
 module.exports.add_client = async (req, res, next) => {
   let new_client = req.body
-  console.log({new_client})
+  logger.log({new_client})
   logger.log('CREATE CLIENT!!')
   setTimeout(async()=>{
     try {
@@ -36,8 +36,17 @@ module.exports.add_client = async (req, res, next) => {
 
 
 
-module.exports.get_client_by_id = (id, cb) => {
-  Client.findById(id, cb);
+module.exports.get_clients = async (req, res, next) => {
+  logger.log(req.user.id)/* Make sure clients belong to this user */
+  let clients = await Client.find();
+  // logger.log({clients})
+  res.send(clients)
+};
+
+
+module.exports.get_client = (req, res, next) => {
+  logger.log(req.params)
+  Client.findById(req.params.client_id);
 };
 
 module.exports.get_client_by_email = async email => {

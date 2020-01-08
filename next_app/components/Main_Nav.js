@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "next/router";
+import Router from "next/router";
 
 import Link from "next/link";
 class Main_Nav extends React.Component {
@@ -11,7 +12,8 @@ class Main_Nav extends React.Component {
 
   render() {
     let is_loggedin = this.props.user.is_loggedin;
-    console.log({ is_loggedin });
+    // console.log({ is_loggedin });
+    // console.log(this.props)
     let { pathname } = this.props.router;
 
     return (
@@ -49,6 +51,9 @@ const Home_Link = ({pathname}) => (
 
 const Logout_Link = ({pathname}) => (
 <>
+<li onClick={() => Router.back()} className="back_button">
+            <Back_Button />
+          </li>
 <li>
     <Link  href="/account-overview">
       <a
@@ -133,3 +138,19 @@ const Register_Login_Links = ({pathname}) => (
     </li>
   </>
 );
+
+
+const Back_Button = () => (
+  <>
+    <Back_Symbol />
+    BACK
+  </>
+);
+const Back_Symbol = ({ path }) => {
+  return (
+    <svg viewBox="0 0 10 10">
+      <line x1="1" y1="5" x2="10" y2="-5" stroke="black" />
+      <line x1="1" y1="5" x2="10" y2="15" stroke="black" />
+    </svg>
+  );
+};

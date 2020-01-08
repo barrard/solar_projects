@@ -13,6 +13,25 @@ class Client_Router {
 
   buildRoutes() {
 
+    /* GET */
+
+
+
+        /* get_clients */
+        this.client_router.get(
+          "/clients",
+          [ensure_authenticated],
+          Client_Controller.get_clients
+        );
+
+            /* Add client */
+    this.client_router.get(
+      "/:client_id",
+      [ensure_authenticated],
+      Client_Controller.get_client
+    );
+
+
     /* POST */
 
     /* Add client */

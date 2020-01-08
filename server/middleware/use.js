@@ -45,9 +45,9 @@ app.use(express_validator(
   })
 
   app.use(cookie_parser());
-  const mongo_store = new mongoStore({ url: "mongodb://localhost/qaltfi" });
+  const mongo_store = new mongoStore({ url: "mongodb://localhost/solar_project" });
   const session_options = {
-    name:'Della_Session',
+    name:'solar_project',
     store: mongo_store,
     secret: 'process.env.SESSION_SECRET',
     saveUninitialized: true,

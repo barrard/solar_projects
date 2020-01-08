@@ -53,11 +53,11 @@ class Login extends React.Component {
         // console.log(this.props)
         // console.log(this.state)
         const _csrf = this.props.meta.csrf
-        console.log({_csrf})
+        // console.log({_csrf})
 
         const {email, password} = data
         // event.preventDefault();
-        let resp = await fetch('/auth/login', {
+        let resp = await fetch(`/auth/login`, {/* process.env.API_SERVER */
           method:'POST',
           headers: {
             "Content-Type": "application/json",
@@ -79,9 +79,9 @@ class Login extends React.Component {
   async handle_login_resp(resp){
     try {
       console.log('handle_login_resp')
-      console.log(resp)
+      // console.log(resp)
       let json = await resp.json()
-      console.log(json)
+      // console.log(json)
 
       if(json.errors &&json.errors.length){
         console.log('WE GOT ERRORS')
@@ -110,8 +110,8 @@ class Login extends React.Component {
 
 
   render() {
-    console.log(this.props)
-    console.log(this)
+    // console.log(this.props)
+    // console.log(this)
     return (
       <Main_Layout className="container">
       <br />

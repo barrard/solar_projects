@@ -45,8 +45,8 @@ next_app
     middleware(server, next_app);
 
     /* Render dynamic client_id */
-    server.get("/account-clients/:client_id", (req, res) => {
-      return next_app.render(req, res, "/account-clients", {
+    server.get("/account-client/:client_id", (req, res) => {
+      return next_app.render(req, res, "/account-client", {
         client_id: req.params.client_id
       });
     });

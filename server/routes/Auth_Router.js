@@ -43,24 +43,24 @@ class Auth_Router {
 
 
     // /* verify_email */
-    // this.auth_router.get("/verify_email", [ensure_authenticated], 
+    // this.auth_router.get("/verify_email", [ensure_authenticated],
     // User_Controller.verify_email);
 
     // /* resend_email_verification */
-    // this.auth_router.post("/resend_email_verification", [ensure_authenticated], 
+    // this.auth_router.post("/resend_email_verification", [ensure_authenticated],
     // User_Controller.resend_email_verification);
 
 
 
 
     // /* update_user_profile */
-    // this.auth_router.post("/update_user_profile", [ensure_authenticated], 
+    // this.auth_router.post("/update_user_profile", [ensure_authenticated],
     //   User_Controller.update_user_profile);
 
     /* Handle usre profile img uploads */
-    this.auth_router.post("/upload_profile_imgs", [ensure_authenticated], 
+    this.auth_router.post("/upload_profile_imgs", [ensure_authenticated],
     User_Controller.upload_profile_imgs);
-    
+
 
 
     /* Sign Up POST route */

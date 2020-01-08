@@ -1,4 +1,6 @@
 import { toastr } from 'react-redux-toastr';
+import fetch from "isomorphic-fetch";
+
 import {is_loading} from '../redux/actions/meta_actions.js'
 
 import {
@@ -6,9 +8,30 @@ import {
   client_model
 } from "../components/models/add_client_model.js";
 
+const API_SERVER = "http://localhost:3000";
+
 export default {
-  add_client
+  add_client, get_clients
 };
+
+async function get_clients(ctx){
+  let http =  await fetch(
+    `
+  ${API_SERVER}/client/clients`,
+    ctx.req
+      ? {
+          withCredentials: true,
+          headers: {
+            cookie: ctx.req.headers.cookie
+          }
+        }
+      : {}
+  );
+  http = await http.json();
+
+  return http
+
+}
 
 async function add_client(data, props) {
   let {meta, dispatch} = props

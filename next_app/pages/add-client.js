@@ -59,7 +59,7 @@ export default connect(mapStateToProps)(withRouter(Account_Profile));
 const Go_To_New_Client_Link = ({ client }) => {
   console.log({ client });
   return (
-    <div onClick={()=>Router.push(`/account-clients/${client._id}`)} className="Go_To_New_Client_Link">
+    <div onClick={()=>Router.push(`/account-client/${client._id}`)} className="Go_To_New_Client_Link">
       {client.firstname} {client.lastname}
 
       <Forward_Symbol />
@@ -71,7 +71,7 @@ const Forward_Symbol = () => {
   return (
     <svg viewBox="0 0 10 10">
       <line
-        stroke-linecap="round"
+        strokeLinecap="round"
         x1="9"
         y1="5"
         x2="0"
@@ -79,7 +79,7 @@ const Forward_Symbol = () => {
         stroke="black"
       />
       <line
-        stroke-linecap="round"
+        strokeLinecap="round"
         x1="9"
         y1="5"
         x2="0"
