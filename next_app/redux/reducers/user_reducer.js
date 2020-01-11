@@ -2,8 +2,6 @@
 
 const initial_state = {
   user: {},
-  username: "",
-  password: "",
   is_loggedin:false
 
 };
@@ -11,7 +9,8 @@ const initial_state = {
 export default (state = initial_state, action) => {
   switch (action.type) {
     case "SET_USER": {
-      // console.log('setting user loggedin')
+      console.log('setting user loggedin')
+      console.log(action.user)
       return { ...state, user:action.user, is_loggedin:true };
     }
 

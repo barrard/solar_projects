@@ -16,10 +16,19 @@ export default (state = initial_state, action) => {
       return { ...state, selected_client: action.client };
     }
 
-    // case 'GET_CSRF': {
-    //   const { csrf } = state;
-    //   return { csrf };
-    // }
+    case 'SET_UPDATED_CLIENT': {
+      let clients = [...state.clients]
+      console.log({clients})
+      const client_index = clients.findIndex((client)=> {
+        console.log({client})
+        return client._id == action.updated_client._id
+      })
+      console.log({client_index})
+      console.log(action.updated_client)
+      clients[client_index] = action.updated_client
+      return {...state, clients}
+
+    }
 
     default:
       return state;

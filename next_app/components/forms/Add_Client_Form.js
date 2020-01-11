@@ -78,6 +78,17 @@ class Add_Client_Form extends React.Component {
               />
             </div>
           </div>
+          <div className="form-group row">
+            <Label>State</Label>
+            <div className="col-6">
+              <Input
+                handle_input={this.handle_input}
+                type="text"
+                name="state"
+                value={this.state.state}
+              />
+            </div>
+          </div>
 
           <div className="form-group row">
             <Label>Zip</Label>
@@ -119,7 +130,7 @@ class Add_Client_Form extends React.Component {
           <div className="form-group">
             <div className="offset-sm-2 col-sm-4">
               <Loading_Button
-              is_loading={is_loading}
+                is_loading={is_loading}
                 className="btn btn-lg btn-primary btn-block load_btn"
                 name="submit"
                 type="submit"

@@ -16,6 +16,32 @@ const Client = client_schema;
 module.exports = Client;
 
 
+
+
+module.exports.update_client = async (req, res, next) => {
+  let updated_client = req.body
+  logger.log({updated_client})
+  logger.log('updated_client CLIENT!!')
+  setTimeout(async()=>{
+    try {
+      let valid = validate_new_client(updated_client)
+      if(!valid)throw 'Invalid client data'
+      logger.log(`Find this id ${req.params.client_id}`)
+      let client = await Client.findOneAndUpdate({
+        _id: req.params.client_id}, {...updated_client}, {
+          new:true
+        });
+
+      return res.send(client);
+    } catch (err) {
+      logger.log({err})
+      return res.send({err:true, msg:err});
+    }
+  }, 500)
+
+};
+
+
 module.exports.add_client = async (req, res, next) => {
   let new_client = req.body
   logger.log({new_client})

@@ -20,6 +20,11 @@ const client_schema = mongoose.Schema({
     default: '',
     require: true
   },
+  state: {
+    type: String,
+    default: '',
+    require: true
+  },
   zip: {
     type: String,
     default: '',

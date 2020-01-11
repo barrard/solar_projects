@@ -13,6 +13,18 @@ export function set_clients (clients){
   }
 }
 
+export function set_updated_client (updated_client){
+  console.log('set_updated_client')
+  return dispatch =>{
+    dispatch({
+      type:"SET_UPDATED_CLIENT",
+      updated_client
+    })
+  }
+}
+
+
+
 
 export function set_selected_client (client){
   return dispatch =>{

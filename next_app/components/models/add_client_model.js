@@ -8,6 +8,7 @@ const client_model = {
   street_address: "",
   city: "",
   zip: "",
+  state:"",
   phone: "",
   email: ""
 };
