@@ -7,10 +7,24 @@ import ReduxToastr from 'react-redux-toastr'
 import { makeStore } from "../redux/store.js";
 import {set_csrf} from '../redux/actions/meta_actions.js'
 import {set_user} from '../redux/actions/user_actions.js'
-import loading_bar from '../components/small_components/loading_bar.js'
+import {set_proposals} from '../redux/actions/proposals_actions.js'
 
+import loading_bar from '../components/small_components/loading_bar.js'
+import API from '../components/API.js'
+import {set_clients} from '../redux/actions/clients_actions.js'
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
+    if(ctx.req && ctx.req.isAuthenticated()){
+
+      /* Get all clients */
+      let clients = await API.get_clients(ctx);
+      ctx.store.dispatch(set_clients(clients));
+      /* Get all projects */
+      //@TODO
+      /* Get all proposals */
+      let proposals = await API.get_proposals(ctx);
+      ctx.store.dispatch(set_proposals(proposals));
+    }
 
     if(ctx.isServer){
       // logger.log('isServer')

@@ -34,8 +34,7 @@ class Account_Profile extends React.Component {
     ensure_loggedin(ctx);
     const { query, store } = ctx;
     // const state = store.getState();
-    let clients = await API.get_clients(ctx);
-    store.dispatch(set_clients(clients));
+
     return {};
   }
 

@@ -3,22 +3,22 @@
 
 
 
-export function set_clients (clients){
-  console.log('set_clients')
+export function set_projects (projects){
+  console.log('set_projects')
   return dispatch =>{
     dispatch({
-      type:"SET_CLIENTS",
-      clients
+      type:"SET_PROJECTS",
+      projects
     })
   }
 }
 
-export function set_updated_client (updated_client){
-  console.log('set_updated_client')
+export function set_updated_project (updated_project){
+  console.log('set_updated_project')
   return dispatch =>{
     dispatch({
-      type:"SET_UPDATED_CLIENT",
-      updated_client
+      type:"SET_UPDATED_PROJECT",
+      updated_project
     })
   }
 }
@@ -26,12 +26,11 @@ export function set_updated_client (updated_client){
 
 
 
-export function set_selected_client (client){
-  console.log({client})
+export function set_selected_project (project){
   return dispatch =>{
     dispatch({
-      type:'SET_SELECTED_CLIENT',
-      client
+      type:'SET_SELECTED_PROJECT',
+      project
 
     })
   }

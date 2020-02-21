@@ -70,9 +70,12 @@ module.exports.get_clients = async (req, res, next) => {
 };
 
 
-module.exports.get_client = (req, res, next) => {
+module.exports.get_client = async (req, res, next) => {
   logger.log(req.params)
-  Client.findById(req.params.client_id);
+  res.send(
+
+    await Client.findById(req.params.client_id)
+  )
 };
 
 module.exports.get_client_by_email = async email => {

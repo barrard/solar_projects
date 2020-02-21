@@ -107,7 +107,8 @@ export default Client_Details_View;
 const Client_Contact = ({ client, mode, edit_tmp_client, tmp_client_data }) => {
   if (mode) {
     return (
-      <>
+      <div className="col-6">
+
         <Input
           handle_input={edit_tmp_client}
           type="email"
@@ -120,7 +121,7 @@ const Client_Contact = ({ client, mode, edit_tmp_client, tmp_client_data }) => {
           name="phone"
           value={tmp_client_data.phone}
         />
-      </>
+      </div>
     );
   }
   return (
@@ -137,7 +138,8 @@ const Client_Contact = ({ client, mode, edit_tmp_client, tmp_client_data }) => {
 const Client_Name = ({ client, mode, edit_tmp_client, tmp_client_data }) => {
   if (mode) {
     return (
-      <>
+      <div className="col-6">
+
         <Input
           handle_input={edit_tmp_client}
           type="text"
@@ -150,7 +152,7 @@ const Client_Name = ({ client, mode, edit_tmp_client, tmp_client_data }) => {
           name="lastname"
           value={tmp_client_data.lastname}
         />
-      </>
+      </div>
     );
   }
   return (
@@ -163,8 +165,8 @@ const Client_Name = ({ client, mode, edit_tmp_client, tmp_client_data }) => {
 const Client_Address = ({ client, mode, edit_tmp_client, tmp_client_data }) => {
   if (mode) {
     return (
-      <>
-        {/* street */}
+      <div className="col-6">
+      {/* street */}
         <Input
           handle_input={edit_tmp_client}
           type="text"
@@ -185,8 +187,7 @@ const Client_Address = ({ client, mode, edit_tmp_client, tmp_client_data }) => {
           name="zip"
           value={tmp_client_data.zip}
         />
-      </>
-    );
+</div>    );
   }
   return (
     <>
@@ -242,6 +243,7 @@ const View_Container = styled.div`
 const Edit_Client_Buttons_Container = styled.div`
   position: absolute;
   right: 1em;
+  display: flex;
 `;
 
 // const StyledWaveDirectionIcon = styled.i`

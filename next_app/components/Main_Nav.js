@@ -17,11 +17,11 @@ class Main_Nav extends React.Component {
     let { pathname } = this.props.router;
 
     return (
-      <nav className='mainNav'>
-        <ul className='nav justify-content-center nav-pills'>
-        {!is_loggedin && <Home_Link pathname={pathname}/>}
-        {!is_loggedin && <Register_Login_Links pathname={pathname}/>}
-          {is_loggedin && <Logout_Link pathname={pathname}/>}
+      <nav className="mainNav">
+        <ul className="nav justify-content-center nav-pills">
+          {!is_loggedin && <Home_Link pathname={pathname} />}
+          {!is_loggedin && <Register_Login_Links pathname={pathname} />}
+          {is_loggedin && <Logout_Link pathname={pathname} />}
         </ul>
       </nav>
     );
@@ -35,84 +35,95 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps)(withRouter(Main_Nav));
 
-const Home_Link = ({pathname}) => (
+const Home_Link = ({ pathname }) => (
   <li>
-  <Link prefetch href="/landing" as="/">
-    <a
-      className={`${
-        pathname == "/landing" ? "active " : " "
-      }" nav-link dropdown-item"`}
-    >
-      Home
-    </a>
-  </Link>
-</li>
-)
-
-const Logout_Link = ({pathname}) => (
-<>
-<li onClick={() => Router.back()} className="back_button">
-            <Back_Button />
-          </li>
-<li>
-    <Link  href="/account-overview">
+    <Link prefetch href="/landing" as="/">
       <a
         className={`${
-          pathname == "/account-overview" ? "active " : " "
+          pathname == "/landing" ? "active " : " "
         }" nav-link dropdown-item"`}
       >
-        Overview
+        Home
       </a>
     </Link>
   </li>
-  <li>
-    <Link  href="/account-projects">
-      <a
-        className={`${
-          pathname == "/account-projects" ? "active " : " "
-        }" nav-link dropdown-item"`}
-      >
-        Projects
-      </a>
-    </Link>
-  </li>
-  <li>
-    <Link  href="/account-proposals">
-      <a
-        className={`${
-          pathname == "/account-proposals" ? "active " : " "
-        }" nav-link dropdown-item"`}
-      >
-        Proposals
-      </a>
-    </Link>
-  </li>
-  <li>
-    <Link  href="/account-clients">
-      <a
-        className={`${
-          pathname == "/account-clients" ? "active " : " "
-        }" nav-link dropdown-item"`}
-      >
-        Clients
-      </a>
-    </Link>
-  </li>
-  <li>
-    <Link  href="/auth/logout">
-      <a
-        className={`${
-          pathname == "/auth/logout" ? "active " : " "
-        }" nav-link dropdown-item"`}
-      >
-        Logout
-      </a>
-    </Link>
-  </li>
-</>
 );
 
-const Register_Login_Links = ({pathname}) => (
+const Logout_Link = ({ pathname }) => (
+  <>
+    <li onClick={() => Router.back()} className="back_button">
+      <Back_Button />
+    </li>
+    <li>
+      <Link href="/account-overview">
+        <a
+          className={`${
+            pathname == "/account-overview" ? "active " : " "
+          }" nav-link dropdown-item"`}
+        >
+          Overview
+        </a>
+      </Link>
+    </li>
+    <li>
+      <Link href="/account-projects">
+        <a
+          className={`${
+            pathname == "/account-projects" ? "active " : " "
+          }" nav-link dropdown-item"`}
+        >
+          Projects
+        </a>
+      </Link>
+    </li>
+    <li>
+      <Link href="/account-proposals">
+        <a
+          className={`${
+            pathname == "/account-proposals" ? "active " : " "
+          }" nav-link dropdown-item"`}
+        >
+          Proposals
+        </a>
+      </Link>
+    </li>
+    <li>
+      <Link href="/account-clients">
+        <a
+          className={`${
+            pathname == "/account-clients" ? "active " : " "
+          }" nav-link dropdown-item"`}
+        >
+          Clients
+        </a>
+      </Link>
+    </li>
+    <li>
+      <Link href="/account-materials">
+        <a
+          className={`${
+            pathname == "/account-materials" ? "active " : " "
+          }" nav-link dropdown-item"`}
+        >
+          Materials
+        </a>
+      </Link>
+    </li>
+    <li>
+      <Link href="/auth/logout">
+        <a
+          className={`${
+            pathname == "/auth/logout" ? "active " : " "
+          }" nav-link dropdown-item"`}
+        >
+          Logout
+        </a>
+      </Link>
+    </li>
+  </>
+);
+
+const Register_Login_Links = ({ pathname }) => (
   <>
     <li>
       <Link prefetch href="/login">
@@ -138,7 +149,6 @@ const Register_Login_Links = ({pathname}) => (
     </li>
   </>
 );
-
 
 const Back_Button = () => (
   <>

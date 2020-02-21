@@ -3,8 +3,9 @@ import { connect } from "react-redux";
 import { toastr } from "react-redux-toastr";
 import { withRouter } from "next/router";
 import Router from "next/router";
-import Link from "next/link";
+import fetch from "isomorphic-fetch";
 
+import API from "../components/API.js";
 import { ensure_loggedin } from "../components/utils/auth.js";
 
 import Main_Layout from "../layouts/Main_Layout.js";
@@ -13,56 +14,26 @@ class Account_Profile extends React.Component {
     super(props);
     this.state = {};
   }
+
   static async getInitialProps(ctx) {
     ensure_loggedin(ctx);
-    return {};
+    const { query } = ctx;
+
+    return { proposal_id: query.proposal_id };
   }
+
   render() {
     // console.log(this.props)
     return (
       <Main_Layout>
-        <h1>Account Overview</h1>
-
-        {/* Action buttons */}
-        <AddClientButton />
-        <AddProposalButton />
-        <AddProjectButton />
+        <h1>{this.props.proposal_id}</h1>
       </Main_Layout>
     );
   }
 }
 
 function mapStateToProps(state) {
-  const { user } = state;
-  return { user };
+  return state;
 }
 
 export default connect(mapStateToProps)(withRouter(Account_Profile));
-
-/* Add user action button */
-
-const AddClientButton = ( ) => {
-  return (
-    <button onClick={()=>Router.push("/add-client")}>
-      Add Client
-    </button>
-  );
-};
-
-
-const AddProposalButton = () => {
-  return (
-    <button onClick={()=>Router.push("/add-proposal")}>
-      Add Proposal
-    </button>
-  );
-};
-
-
-const AddProjectButton = () => {
-  return (
-    <button onClick={()=>Router.push("/add-project")}>
-      Add Project
-    </button>
-  );
-};

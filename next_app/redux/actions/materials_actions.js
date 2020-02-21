@@ -1,7 +1,8 @@
-export function set_csrf(csrf) {
+export function set_materials_type(material_type) {
+  console.log({ material_type });
   return {
-    type: "SET_CSRF",
-    csrf
+    type: "SET_MATERIALS_TYPE",
+    material_type
   };
 }
 

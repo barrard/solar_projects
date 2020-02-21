@@ -26,8 +26,6 @@ const handle = next_app.getRequestHandler();
 const get_routes = require("./routes/routes.js");
 const routes = get_routes();
 
-
-
 //TODO figure out if this will be useful
 // const LRUCache = require('lru-cache')
 // const ssrCache = new LRUCache({
@@ -48,6 +46,13 @@ next_app
     server.get("/account-client/:client_id", (req, res) => {
       return next_app.render(req, res, "/account-client", {
         client_id: req.params.client_id
+      });
+    });
+
+    /* Render dynamic proposal_id */
+    server.get("/account-proposal/:proposal_id", (req, res) => {
+      return next_app.render(req, res, "/account-proposal", {
+        proposal_id: req.params.proposal_id
       });
     });
 

@@ -17,6 +17,7 @@ module.exports = (app, next_app) => {
   const {auth_router} = require('../routes/Auth_Router.js')()
   const {user_router} = require('../routes/User_Router.js')()
   const {client_router} = require('../routes/Client_Router.js')()
+  const {proposal_router} = require('../routes/Proposal_Router.js')()
 
   app.use(helmet());
   app.use(cors())
@@ -183,6 +184,7 @@ app.use((err, req, res, next)=> {
   app.use('/auth',auth_router)
   app.use('/user', user_router)
   app.use('/client', client_router)
+  app.use('/proposal', proposal_router)
   // app.use((req, res, next)=>{
   //   logger.log('res.checkBody9')
   //   next()
