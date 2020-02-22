@@ -74,6 +74,7 @@ next_app
     server.listen(port, err => {
       if (err) throw err;
       logger.log(`> Ready on http://localhost:${port}`);
+      logger.log(`> API ready on ${process.env.API_SERVER}`)
     });
   })
   .catch(ex => {

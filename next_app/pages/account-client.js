@@ -21,12 +21,11 @@ class Account_Profile extends React.Component {
     const { query, store } = ctx;
     const state = store.getState();
     // console.log(state)
-    const API_SERVER = 'http://localhost:3000';
     // console.log({ API_SERVER });
     // console.log(query);
     // // log(`${API_SERVER}/crowdsale/get_campaign/${crowdsale_id}`)
     let client = await fetch(`
-    ${API_SERVER}/client/${query.client_id}
+    ${process.env.API_SERVER}/client/${query.client_id}
     `);
     // console.log({client})
     // let campaign_view_data = await campaign.json();

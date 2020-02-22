@@ -46,11 +46,11 @@ app.use(express_validator(
   })
 
   app.use(cookie_parser());
-  const mongo_store = new mongoStore({ url: "mongodb://localhost/solar_project" });
+  const mongo_store = new mongoStore({ url: `mongodb://localhost/${process.env.PROJECT_NAME}` });
   const session_options = {
-    name:'solar_project',
+    name: process.env.PROJECT_NAME,
     store: mongo_store,
-    secret: 'process.env.SESSION_SECRET',
+    secret: process.env.SESSION_SECRET,
     saveUninitialized: true,
     resave: true,
     cookie: {

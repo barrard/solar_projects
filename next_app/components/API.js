@@ -16,7 +16,7 @@ import {
   proposal_model
 } from "../components/models/add_proposal_model.js";
 
-const API_SERVER = "http://localhost:3000";
+const API_SERVER = process.env.API_SERVER
 
 export default {
   add_client,
