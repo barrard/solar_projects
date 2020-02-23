@@ -14,7 +14,7 @@ import API from '../components/API.js'
 import {set_clients} from '../redux/actions/clients_actions.js'
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
-    if(ctx.req && ctx.req.isAuthenticated()){
+    if(ctx.req && ctx.req.isAuthenticated){
       console.log('WHOA')
 
       /* Get all clients */
